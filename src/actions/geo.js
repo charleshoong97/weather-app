@@ -13,7 +13,7 @@ import { showWarning } from "../redux/slice/alertSlice";
 export const getLocation = async (dispatch, searchText) => {
   return await axios
     .get(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURI(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURI(
         searchText
       )}&limit=5&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY}`
     )
@@ -38,7 +38,7 @@ export const getLocation = async (dispatch, searchText) => {
 export const getLocationViaLatLon = async (dispatch, lat, lon) => {
   await axios
     .get(
-      `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY}`
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=5&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY}`
     )
     .then(async (res) => {
       if (res.data?.length > 0) {

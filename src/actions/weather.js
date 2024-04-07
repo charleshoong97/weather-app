@@ -14,7 +14,6 @@ export function useGetWeather() {
     const getData = async () => {
       const promise = axios
         .get(
-          // "https://hub.dummyapis.com/delay?seconds=10"
           `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly&appid=${process.env.REACT_APP_OPEN_WEATHER_MAP_API_KEY}`
         )
         .then((response) => {
