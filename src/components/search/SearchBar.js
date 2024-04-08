@@ -1,40 +1,21 @@
-import { Search } from "@mui/icons-material";
-import {
-  IconButton,
-  Stack,
-  TextField,
-  useTheme,
-  Autocomplete,
-  Box,
-} from "@mui/material";
+import { Autocomplete, Stack, TextField, useTheme } from "@mui/material";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getLocation } from "../../actions/geo";
 import {
   searchTextChange,
   updateLocation,
 } from "../../redux/slice/searchSlice";
-import { getLocation } from "../../actions/geo";
-import { showWarning } from "../../redux/slice/alertSlice";
-import { useEffect, useState } from "react";
 import { getLocationDisplay } from "../../utils/helpers";
-import { addHistory } from "../../redux/slice/historySlice";
 
 export default function SearchBar() {
   const theme = useTheme();
   const dispatch = useDispatch();
 
-  // const [options, setOptions] = useState([]);
-
   const { searchText, options, location } = useSelector(
     (state) => state.search
   );
   const [text, setText] = useState(searchText);
-
-  // const searchCountry = async () => {
-  //   if (!Boolean(searchText)) {
-  //     dispatch(showWarning("Invalid Search text"));
-  //     return;
-  //   }
-  // };
 
   useEffect(() => {
     setText(searchText);
@@ -97,18 +78,6 @@ export default function SearchBar() {
           />
         )}
       />
-      {/* <IconButton
-        sx={{
-          color: "white",
-          backgroundColor: theme.palette.background.default,
-          height: [40, 60],
-          width: [40, 60],
-          borderRadius: ["8px", "20px"],
-        }}
-        onClick={() => searchCountry()}
-      >
-        <Search />
-      </IconButton> */}
     </Stack>
   );
 }

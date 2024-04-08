@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux";
-import axios from "../utils/axios";
-import { addHistory } from "../redux/slice/historySlice";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addHistory } from "../redux/slice/historySlice";
+import axios from "../utils/axios";
 
 export function useGetWeather() {
   const [weather, setWeather] = useState(null);

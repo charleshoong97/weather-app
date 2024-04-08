@@ -1,14 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import axios from "../utils/axios";
-import { addHistory } from "../redux/slice/historySlice";
-import { getWeather } from "./weather";
+import { showWarning } from "../redux/slice/alertSlice";
 import {
   searchTextChange,
   updateLocation,
   updateOptions,
 } from "../redux/slice/searchSlice";
+import axios from "../utils/axios";
 import { getLocationDisplay } from "../utils/helpers";
-import { showWarning } from "../redux/slice/alertSlice";
 
 export const getLocation = async (dispatch, searchText) => {
   return await axios
@@ -32,7 +29,7 @@ export const getLocation = async (dispatch, searchText) => {
         return res.data;
       }
     })
-    .catch((error) => alert(error));
+    .catch((error) => dispatch(showWarning(error)));
 };
 
 export const getLocationViaLatLon = async (dispatch, lat, lon) => {
@@ -45,11 +42,7 @@ export const getLocationViaLatLon = async (dispatch, lat, lon) => {
         dispatch(searchTextChange(getLocationDisplay(res.data[0])));
         dispatch(updateOptions([res.data[0]]));
         dispatch(updateLocation(res.data[0]));
-      } else {
-        alert("no result");
       }
     })
-    .catch((error) => alert(error));
-
-  // await getWeather(dispatch, lat, lon);
+    .catch((error) => dispatch(showWarning(error)));
 };

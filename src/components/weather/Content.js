@@ -1,11 +1,11 @@
-import { Box, Typography, useTheme, Stack, IconButton } from "@mui/material";
-import { useSelector, useDispatch } from "react-redux";
-import { getDisplayCelcius, getLocationDisplay } from "../../utils/helpers";
-import { useGetWeather } from "../../actions/weather";
-import { dateFormat } from "../../utils/constants";
-import moment from "moment";
 import { Sync } from "@mui/icons-material";
+import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
+import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetWeather } from "../../actions/weather";
 import { toggleSync } from "../../redux/slice/searchSlice";
+import { dateFormat } from "../../utils/constants";
+import { getDisplayCelcius, getLocationDisplay } from "../../utils/helpers";
 
 export default function Weather() {
   const theme = useTheme();
@@ -14,7 +14,6 @@ export default function Weather() {
 
   const weather = useGetWeather();
 
-  // come with sync button
   return weather ? (
     <>
       <Stack direction={"row"} justifyContent={"space-between"}>

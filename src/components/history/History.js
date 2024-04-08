@@ -7,8 +7,8 @@ import {
   updateLocation,
   updateOptions,
 } from "../../redux/slice/searchSlice";
-import { getLocationDisplay } from "../../utils/helpers";
 import { dateFormat } from "../../utils/constants";
+import { getLocationDisplay } from "../../utils/helpers";
 
 export default function History() {
   const history = useSelector((state) => state.history);
